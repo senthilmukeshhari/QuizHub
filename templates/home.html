@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+
+<title>Front Page</title>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+{% endblock title %}
+
+
+{% block content %}
+ 
+<main class="container-lg">
+    <div class="row w-100 h-100 d-flex justify-content-lg-between justify-content-md-around justify-content-center">
+
+        <div class="background-images col-lg-7 col-md-6 col-0 row d-md-flex justify-content-md-center align-items-md-end d-none">
+            <img src="{% static 'images/ronaldo.png' %}" alt="...">
+            <img src="{% static 'images/tajmahal.png' %}" alt="...">
+            <img src="{% static 'images/messi.png' %}" alt="...">
+            <img src="{% static 'images/bill-gates.png' %}" alt="...">
+        </div>
+        <div
+            class="login-box col-lg-3 col-md-4 col-10 offset-md-1 position-relative ms-md-0 ms-3 d-flex align-items-center justify-content-center">
+            <form method="post" action="{% url 'home' %}"
+                class="welcome-container w-100 h-75 shadow rounded-3 d-flex flex-column align-items-center py-4 bg-transperent">
+                {% csrf_token %}
+                <img src="{% static 'images/Hello.webp' %}" alt="..." class="w-100">
+                <div class="d-flex my-2 align-items-end">
+                    <h2 class="text-danger fs-2 text-shadow">W</h2>
+                <h2 class="text-light fs-3 text-shadow">elcome</h2>
+                </div>
+                <input type="text" name="user_name" placeholder="Enter Your Name" autocomplete="false" autofocus="true"
+                    class="text-light py-2 ps-3 my-2" id="user_name" autocapitalize="true">
+                    <div class="invaild-feedback text-light fs-5 my-1"></div>
+                <button type="submit" class="mt-2 text-dark">Let's Start</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}
+
+{% block scripts %}
+
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock scripts %}

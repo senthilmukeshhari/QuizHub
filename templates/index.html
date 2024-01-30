@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{% static 'images/Logo1.jpeg' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    {% endblock title %}
+    
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Font Awsome -->
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
+    <!-- Js-Bootstap -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+</head>
+
+<body>
+
+    <div
+        class="spinner w-100 position-fixed d-flex flex-column justify-content-center align-items-center bg-dark">
+        <div class="logo d-flex align-items-center justify-content-centermb-2">
+            <h2 class="text-danger">Quiz</h2>
+            <h2 class="text-white ps-1">Hub</h2>
+            <h4 class="text-light fs-1 fw-bold">?</h4>
+        </div>
+        <div class="loadinng">
+            <div class="spinner-grow text-danger me-2" role="status">
+            </div>
+            <div class="spinner-grow text-light me-2" role="status">
+            </div>
+            <div class="spinner-grow text-danger me-2" role="status">
+            </div>
+            <div class="spinner-grow text-light me-2" role="status">
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+            </div>
+        </div>
+    </div>
+
+    <!--Navbar-->
+    <header class="position-sticky top-0 left-0 mb-4">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transperent shadow">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <h2 class="text-danger">Quiz</h2>
+                    <h2 class="text-light ps-1">Hub</h2>
+                    <h4 class="text-light fs-1 fw-bold">?</h4>
+                </a>
+                <div class="timer d-none text-light fs-4 fw-bold d-flex">
+                    <div class="minutes"> 05&nbsp;:&nbsp;</div>
+                    <div class="seconds"> 00 </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--End Navbar-->
+
+    {% block content %}
+    {% endblock content %}
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    
+    {% block scripts %}
+    {% endblock scripts %}
+
+
+</body>
+
+</html>

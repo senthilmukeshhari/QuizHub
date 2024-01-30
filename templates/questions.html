@@ -1,0 +1,125 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+
+<title>Front Page</title>
+<link rel="stylesheet" href="{% static 'css/questions.css' %}">
+
+{% endblock title %}
+
+
+{% block content %}
+
+<!-- Main Content -->
+<main class="container-lg container-fluid  d-flex justify-content-center">
+    <div class="row w-100 h-100">
+        <div class="col-12">
+
+            <!-- User Card -->
+            <div class="card bg-transperent shadow" id="user-card">
+                <div class="card-body">
+                    <h2 class="card-title text-light fw-bold" id="user"></h2>
+                    <div class="d-flex flex-column">
+                        <p class="card-text text-light" style="font-size: 18px;">&nbsp;Hey {{user}} ! Ready to turn
+                            learning into game ? Our quizzes are tailored just for you. Dive in, challenge yourself, and
+                            let the knowledge journey begin !</p>
+                        <button type="button" id="start-btn"
+                            class="btn btn-danger w-md-25 w-sm-50 p-2 fs-5 shadow ms-md-auto px-5">Let's Start <i
+                                class="fa-solid fa-circle-play ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- End User Card -->
+
+            <form name="questionsForm">
+                {% csrf_token %}
+
+                {% for data in questions %}
+                <!-- Qusetion Card -->
+                <div class="card bg-transperent shadow my-3 d-none">
+                    <div class="row">
+                        <div class="col-xl-4 col-md-4 col-sm-4 offset-md-0 offset-sm-0 offset-1 col-10 card-header">
+                            <img src="/media/{{ data.related_img }}" alt=" ..." class="w-100">
+                        </div>
+                        <div class="col-12 col-md-8 col-sm-8">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-tittle text-light fs-3 fw-bold">{{data.question_no}}.{{ data.catagery }}
+                                </h5>
+                                <h6 class="card-text text-light fs-5 fw-bold">{{data.question}}</h6>
+                                <div class="options row text-light d-flex justify-content-center">
+
+                                    <!-- First Option -->
+                                    <div class="col-6 my-1 d-flex align-items-center no">
+                                        <input type="radio" name="{{data.catagery}}" id="{{data.catagery}}-1"
+                                            class="form-check-input" value="{{data.opt1}}">
+                                        <label for="{{data.catagery}}-1" class="fs-5 px-2 ms-2">{{data.opt1}}</label>
+                                    </div>
+                                    <!-- End First Option -->
+
+                                    <!-- Second Option -->
+                                    <div class="col-6 my-1 d-flex align-items-center">
+                                        <input type="radio" name="{{data.catagery}}" id="{{data.catagery}}-2"
+                                            class="form-check-input" value="{{data.opt2}}">
+                                        <label for="{{data.catagery}}-2" class="fs-5 px-2 ms-2">{{data.opt2}}</label>
+                                    </div>
+                                    <!-- end Second Option -->
+
+                                    <!-- Third Option -->
+                                    <div class="col-6 my-1 d-flex align-items-center">
+                                        <input type="radio" name="{{data.catagery}}" id="{{data.catagery}}-3"
+                                            class="form-check-input" value="{{data.opt3}}">
+                                        <label for="{{data.catagery}}-3" class="fs-5 px-2 ms-2">{{data.opt3}}</label>
+                                    </div>
+                                    <!-- End Third Option -->
+
+                                    <!-- Fourth Option -->
+                                    <div class="col-6 my-1 d-flex align-items-center">
+                                        <input type="radio" name="{{data.catagery}}" id="{{data.catagery}}-4"
+                                            class="form-check-input" value="{{data.opt4}}">
+                                        <label for="{{data.catagery}}-4" class="fs-5 px-2 ms-2">{{data.opt4}}</label>
+                                    </div>
+                                    <!-- End Fourth Option -->
+
+                                </div>
+                                <p class="err-msg text-light fs-5 my-1"></p>
+                                <button type="button" class="btn btn-danger shadow ms-auto px-5"
+                                    onclick="showNextCard(event)">Next <i
+                                        class="fa-solid fa-circle-arrow-right ms-2"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Question Card -->
+                {% endfor %}
+            </form>
+
+        </div>
+    </div>
+</main>
+<!-- End Main Content -->
+
+{% endblock content %}
+
+{% block scripts %}
+
+<!-- Typed Js File -->
+<script src="{% static 'js/typed.umd.js' %}"></script>
+
+<!-- Some Information -->
+<script>
+    let user_name = "{{user|escapejs}}"
+    // User Name With Typing Animation
+    let type_user = `Hi ${user_name}...`
+    // Data receive from backend
+    var question_data = JSON.parse('{{questions_json|escapejs}}')
+    // Question Url
+    let url = "{% url 'questions' %}"
+</script>
+
+<!-- Questions Js File -->
+<script src="{% static 'js/questions.js' %}"></script>
+
+{% endblock scripts %}

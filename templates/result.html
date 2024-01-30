@@ -1,0 +1,139 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+
+<title>Front Page</title>
+<link rel="stylesheet" href="{% static 'css/result.css' %}">
+
+{% endblock title %}
+
+
+{% block content %}
+
+<main class="container-xl container-fluid">
+
+    <div class="row w-100 d-flex flex-sm-row flex-column justify-content-around">
+        <!-- Result Card -->
+        <div class="col-xl-7 col-lg-8 col-md-7 col-sm-10 offset-sm-0 offset-1 col-10 card bg-transperent shadow">
+            <!-- Result Card Body -->
+            <div class="card-body d-flex flex-column justify-content-between">
+                <!-- Greetings -->
+                <h1 class="greetings m-lg-3 text-center fw-bold text-light">Take it Easy!</h1>
+                <!-- End Greetings -->
+
+                <!-- Result Box -->
+                <div class="result-box row d-flex justify-content-around align-items-center">
+
+                    <!-- Result Image -->
+                    <img src="{% static 'images/zero.png' %}" alt="..." class="result-img col-xl-6 col-md-6 col-sm-6 col-7">
+                    <!-- End Result Image -->
+
+                    <!-- Result Details -->
+                    <div class="col-xl-5 col-md-6 col-sm-6 col-12 d-flex flex-sm-column flex-row justify-content-around h-100 my-sm-0 my-3">
+                        <!-- Result Circle -->
+                        <div class="result-circle w-100 d-flex justify-content-center my-lg-4 my-3">
+                            <div class="outer position-relative d-flex justify-content-center align-items-center">
+                                <div class="inner position-absolute"></div>
+                                <svg>
+                                    <circle cx="70" cy="70" r="70"></circle>
+                                </svg>
+                                <div
+                                    class="result-percentage position-absolute text-light d-flex justify-content-center align-items-center">
+                                    <h1 class="fw-bold text-shadow fs-1">0</h1>
+                                    <span class="fs-4 ms-1">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Result Circle -->
+                        <!-- Result Description -->
+                        <div class="result-dec shadow w-100 py-sm-2 rounded-3 px-sm-0 px-2 ms-sm-0 ms-3 text-light d-flex flex-column justify-content-center align-items-center">
+                            <h3 class="text">Name : {{user_name}}</h3>
+                            <h3 class="text">Score : {{score}}</h3>
+                        </div>
+                        <!-- End Result Description -->
+                    </div>
+                    <!-- End Result Details -->
+
+                </div>
+                <!-- End Result Box -->
+            </div>
+            <!-- End Result Card Body -->
+        </div>
+        <!-- End Result Card -->
+
+        <!-- Feedback Card -->
+        <div class="offset-xl-1 col-xl-4 col-lg-3 col-md-4 col-sm-10 offset-sm-0 offset-1 col-10 bg-transperent shadow rounded-3 d-flex flex-column justify-content-around my-md-0 my-3">
+            <h4 class="text-light fw-bold pt-3 text-center text-shadow fs-3">Feedback</h4>
+            <form method="post" name="feedback_form" class="d-flex justify-content-center align-items-center">
+                {% csrf_token %}
+                <div class="opt d-flex flex-column w-75">
+                    <input type="text" class="d-none" name="user_name" value="{{user_name}}">
+                    <label class="feedback_opt text-light fs-5 px-2 py-1 my-1 shadow" for="excellent">
+                        <input type="radio" name="feedback" id="excellent" class="d-none" value="excellent"
+                            onchange="selectOpt()">
+                        <img src="{% static 'images/excellent.png' %}" alt="excellent img" width="40" height="40">
+                        Excellent
+                    </label>
+                    <label class="feedback_opt text-light fs-5 px-2 py-1 my-1 shadow" for="good">
+                        <input type="radio" name="feedback" id="good" class="d-none" value="good"
+                            onchange="selectOpt()">
+                        <img src="{% static 'images/good.png' %}" alt="good img" width="40" height="40"> Good
+                    </label>
+                    <label class="feedback_opt text-light fs-5 px-2 py-1 my-1 shadow" for="average">
+                        <input type="radio" name="feedback" id="average" class="d-none" value="average"
+                            onchange="selectOpt()">
+                        <img src="{% static 'images/average.png' %}" alt="average img" width="40" height="40"> Average
+                    </label>
+                    <label class="feedback_opt text-light fs-5 px-2 py-1 my-1 shadow" for="poor">
+                        <input type="radio" name="feedback" id="poor" class="d-none" value="poor"
+                            onchange="selectOpt()">
+                        <img src="{% static 'images/poor.png' %}" alt="poor img" width="40" height="40"> Poor
+                    </label>
+                    <label class="feedback_opt text-light fs-5 px-2 py-1 my-1 shadow" for="very_poor">
+                        <input type="radio" name="feedback" id="very_poor" class="d-none" value="very poor"
+                            onchange="selectOpt()">
+                        <img src="{% static 'images/very poor.png' %}" alt="very poor img" width="40" height="40">
+                        Very Poor
+                    </label>
+                    <p class="err text-light mt-1"></p>
+                    <button type="submit" class="btn btn-danger my-2 fs-5 fw-bold">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+        <!-- End Feedback Card -->
+    </div>
+
+</main>
+
+<!-- Modal -->
+<div class="modal fade w-100 h-100" id="Mymodal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-transperent">
+            <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                <h5 class="text-light fw-bold text-shadow">THANK YOU FOR VISIT !</h5>
+                <img src="{% static 'images/thank you.png' %}" alt="..." class="img-fluid img-shadow">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'js/confetti.js' %}"></script>
+<script>
+
+    const score = "{{score|escapejs}}"
+
+    const five_img = "{% static 'images/five.png' %}"
+    const four_img = "{% static 'images/four.png' %}"
+    const three_and_two_img = "{% static 'images/two and three.png' %}" 
+    const one_img = "{% static 'images/one.png' %}"
+
+</script>
+<script src="{% static 'js/result.js' %}"></script>
+
+{% endblock scripts %}

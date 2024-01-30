@@ -1,0 +1,127 @@
+.greetings {
+    font-family: 'Algerian';
+    font-size: 3.5rem;
+    -webkit-text-fill-color: #dc3545;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+}
+
+@media (max-width: 767.98px) {
+    .greetings {
+        font-family: 'Algerian';
+        font-size: 3rem;
+        -webkit-text-fill-color: #dc3545;
+        -webkit-text-stroke-width: 0.8px;
+        -webkit-text-stroke-color: #fff;
+    }
+}
+
+.result-img {
+    object-fit: contain;
+    filter: drop-shadow(15px 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+svg {
+    width: 155px;
+    height: 155px;
+    transform: rotate(270deg);
+}
+
+svg circle {
+    fill: none;
+    stroke-width: 10;
+    transform: translate(8px, 7px);
+    stroke-dasharray: 450;
+    stroke-dashoffset: 450;
+    stroke-linecap: round;
+}
+
+h1 {
+    z-index: 100;
+}
+
+span {
+    opacity: .7;
+}
+
+.outer {
+    border-radius: 50%;
+    box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.3),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.1);
+}
+
+.inner {
+    border-radius: 50%;
+    width: 80%;
+    height: 80%;
+    box-shadow: inset 4px 4px 6px 2px rgba(0, 0, 0, 0.2),
+        inset -4px -4px 6px -1px rgba(255, 255, 255, 0.1),
+        -0.5px -0.5px 0px rgba(255, 255, 255, 0.1),
+        0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+        0 12px 10px -10px rgba(0, 0, 0, 0.05);
+}
+
+.result-dec {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.text {
+    text-shadow: 1px 1px 1px #919191,
+        1px 2px 1px #919191,
+        1px 3px 1px #4e2f2f,
+        1px 10px 6px rgba(16, 16, 16, 0.4),
+        1px 12px 10px rgba(16, 16, 16, 0.2),
+        1px 15px 35px rgba(16, 16, 16, 0.2),
+        1px 20px 60px rgba(16, 16, 16, 0.4);
+}
+
+.opt {
+    perspective: 1000px;
+}
+
+.feedback_opt {
+    border-radius: 50px;
+    transform-style: preserve-3d;
+}
+
+.feedback_opt:hover {
+    text-shadow: -.7rem .5rem .25rem rgba(0, 0, 0, .5);
+    background: rgba(255, 255, 255, 0.15);
+    transform: translate3d(0, 0, 50px);
+}
+
+.feedback_opt>img {
+    object-fit: contain;
+    margin: 0 10px;
+}
+
+.feedback_opt:hover img {
+    transform: translate3d(5%, 0, 20px);
+    filter: drop-shadow(-.5rem .7rem .2rem rgba(0, 0, 0, 0.2));
+}
+
+.labelstyle {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translate3d(0, 0, 50px);
+    text-shadow: -.7rem .5rem .25rem rgba(0, 0, 0, .5);
+
+}
+
+.imgstyle {
+    transform: translate3d(5%, 0, 20px);
+    filter: drop-shadow(-.5rem .7rem .2rem rgba(0, 0, 0, 0.2));
+}
+
+.modal {
+    backdrop-filter: blur(10px);
+}
+
+.modal-dialog {
+    height: 350px;
+    width: 350px;
+}
+
+.img-shadow {
+    object-fit: contain;
+    filter: drop-shadow(.7rem .5rem .2rem rgba(0, 0, 0, 0.2));
+}

@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+
+<title>Feedback Result Page</title>
+
+{% endblock title %}
+
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-light mt-3 fw-bold">Feedback Results</h1>
+            <div class="table-responsive d-flex justify-content-center rounded my-4">
+                <table class="table table-striped bg-transperent table-hover" name="contactTable">
+                    <thead class="btn-secondary  fs-3 fw-bold text-center">
+                        <th>User ID</th>
+                        <th>User Name</th>
+                        <th>Feedback</th>
+                    </thead>
+                    {% for n in data %}
+                    <tr class="text-light fs-5 text-center">
+                        <td>{{n.user_id}}</td>
+                        <td>{{n.user_name}}</td>
+                        <td>{{n.feedback}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}
+
+{% block scripts %}
+
+{% endblock scripts %}

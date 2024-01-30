@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #2f363e;
+}
+
+.bg-transperent {
+    background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(10px);
+}
+
+.spinner{
+    height: 100vh;
+    z-index: 2000;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+header{
+    z-index: 1000;
+}

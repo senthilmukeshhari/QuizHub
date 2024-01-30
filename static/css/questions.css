@@ -1,0 +1,55 @@
+#user {
+    width: fit-content;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.typing {
+    animation: typing 2s steps(15);
+}
+
+@keyframes typing {
+    from {
+        width: fit-content;
+    }
+
+    100% {
+        border-right: transparent;
+    }
+
+    0%,
+    99% {
+        border-right: 2px solid white;
+    }
+}
+
+.card-header > img{
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    filter: drop-shadow(15px 15px 15px #25252d);
+}
+
+input[type='radio']{
+    cursor: pointer;
+}
+
+label{
+    cursor:pointer;
+}
+
+.animate{
+    animation: 1s animate;
+}
+
+@keyframes animate{
+    from{
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+    to{
+        opacity: 1;
+        transform: rotateX(0);
+    }
+}
