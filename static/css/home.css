@@ -72,8 +72,7 @@ main {
 .welcome-container button:hover{
     transition: 0.5s;
     box-shadow: 0 0 10px #45f3ff,
-    0 0 60px #45f3ff;
-    
+    0 0 40px #45f3ff;
 }
 
 .welcome-container img {
