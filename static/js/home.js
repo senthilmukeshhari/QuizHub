@@ -24,8 +24,8 @@ let form = document.querySelector('form')
 let error_msg = document.querySelector('.invaild-feedback')
 
 form.addEventListener('submit', (e) => {
-    if (input.value == '') {
-        error_msg.innerText = 'Please enter your name'
+    if (input.value.trim() == '') {
+        error_msg.innerText = 'Please Enter Name.'
         e.preventDefault()
     }
 })
