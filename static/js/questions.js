@@ -1,4 +1,5 @@
 $('form[name=questionsForm]').children().last().find('button').text('Submit').addClass('fw-bold')
+var timer;
 
 //  Animation
 window.addEventListener('load', () => {
@@ -30,7 +31,7 @@ $('#start-btn').click((e) => {
     e.target.disabled = true
     $('.timer').removeClass('d-none')
     let minutes = 9, seconds = 60
-    let timer = setInterval(() => {
+    timer = setInterval(() => {
         seconds--
         if (seconds < 0) {
             minutes--
@@ -44,7 +45,6 @@ $('#start-btn').click((e) => {
         }
     }, 100);
 })
-
 function displayTimer(ss, mm) {
     if (mm == 0 && ss <= 59) {
         $('.minutes').addClass('text-danger')
@@ -102,6 +102,9 @@ function showNextCard(e) {
             nextCard.classList.add('animate')
         }
         if (nextCard == null) {
+            let submitBtn = currentCard.querySelector('.btn')
+            submitBtn.disabled = true
+            clearInterval(timer);
             validation()
         }
     }
